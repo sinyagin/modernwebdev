@@ -9,4 +9,5 @@
 function find(e, $) {
     console.log('find');
     $('#main-container').hide();
+    $('#search-results').show();
 }
