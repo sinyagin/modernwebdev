@@ -6,9 +6,7 @@
  * Search handler
  * @param {Event} e
  */
-function find(e) {
+function find(e, $) {
     console.log('find');
-    var container = document.querySelector('div.container');
-    container.hide();
-    console.log(container);
+    $('#main-container').hide();
 }
