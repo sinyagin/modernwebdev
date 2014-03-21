@@ -6,8 +6,9 @@
  * Search handler
  * @param {Event} e
  */
-function find(e, $) {
+function find($) {
     console.log('find');
     $('#main-container').hide();
     $('#search-results').show();
+    $('#slider').slider({});
 }

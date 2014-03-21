@@ -25,7 +25,7 @@
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Enter product name">
                 </div>
-                <button type="button" class="btn btn-default" onclick="find(event, $)">Search</button>
+                <button type="button" class="btn btn-default" onclick="find($)">Search</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="javascript:void(0)"><span class="glyphicon glyphicon-question-sign"></span> Help</a>
@@ -251,16 +251,11 @@
                     </div>
                 </div>
 
-                //todo spinner
-                <!--div class="form-group">
-                    <div id="slider" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
-                         aria-disabled="false">
-                        <div class="ui-slider-range ui-widget-header ui-corner-all"
-                             style="left: 10%; width: 80%;"></div>
-                        <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 10%;"></a>
-                        <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 90%;"></a>
-                    </div>
-                </div-->
+                <div class="form-group text-center">
+                    <!--todo fix width -->
+                    <input id="slider" type="text" class="span2" value="" data-slider-min="0" data-slider-max="1500"
+                           data-slider-step="5" data-slider-value="[150,1000]"/>
+                </div>
 
              </div>
 
@@ -333,7 +328,7 @@
                 </div>
 
                 <div class="product-description-holder col-sm-6 col-md-8">
-                    <!--todo Tablet item's title должен быть над изобрадение -->
+                    <!--todo Tablet: item's title должен быть над изобрадение -->
                     <h2><a href="javascript:void(0)">Item's title</a></h2>
 
                     <p>
