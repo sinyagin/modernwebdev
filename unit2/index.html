@@ -25,11 +25,11 @@
             <a class="navbar-brand" href="javascript:void(0);">ABC Auction</a>
         </div>
         <div class="navbar-collapse collapse">
-            <form class="navbar-form navbar-left navbar-input-group" role="search">
+            <form action="#/search" class="navbar-form navbar-left navbar-input-group" role="search">
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Enter product name">
                 </div>
-                <button type="button" class="btn btn-default" onclick="find($)">Search</button>
+                <button type="submit" class="btn btn-default">Search</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="javascript:void(0)"><span class="glyphicon glyphicon-question-sign"></span> Help</a>
@@ -43,10 +43,7 @@
 </div>
 <!-- / Navbar -->
 
-<div class="container" ng-controller="MainCtrl">
-        <ul>
-            <li ng-repeat = "thing in awesomeThings">{{thing}}</li>
-        </ul>
+<div class="container" ng-view>
 </div>
 
 <!-- Footer -->
