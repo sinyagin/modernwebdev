@@ -2,3 +2,64 @@
  It's the entry point to the auction app. Use this file to link dependencies (3rd-party libraries)
  as well as your own code. It can also contain UI components common to all the pages.
  -->
+<!DOCTYPE html>
+<html ng-app="auction">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Unit 2. Homework.</title>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/bootstrap/css/slider.css">
+</head>
+
+<body>
+
+<!-- Navbar -->
+<div class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="javascript:void(0);">ABC Auction</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <form class="navbar-form navbar-left navbar-input-group" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Enter product name">
+                </div>
+                <button type="button" class="btn btn-default" onclick="find($)">Search</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="javascript:void(0)"><span class="glyphicon glyphicon-question-sign"></span> Help</a>
+                </li>
+                <li><a href="javascript:void(0);"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+                <li><a href="javascript:void(0)"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping
+                    cart</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- / Navbar -->
+
+
+<!-- Footer -->
+<footer class="text-center">
+    <br/>
+    <a href="javascript:void(0)">Home</a> |
+    <a href="javascript:void(0)">Search</a> |
+    <a href="javascript:void(0)">About Us</a> |
+    <a href="javascript:void(0)">Terms of Service</a>
+    <br/><br/>
+</footer>
+<!-- / Footer -->
+
+<script src="lib/jquery/jquery.js"></script>
+<script src="lib/bootstrap/js/bootstrap.js"></script>
+<script src="lib/bootstrap/js/bootstrap-slider.js"></script>
+<script src="lib/angular/angular-route.js"></script>
+<script src="lib/angular/angular.js"></script>
+
+</body>
+</html>
