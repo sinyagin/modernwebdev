@@ -43,6 +43,11 @@
 </div>
 <!-- / Navbar -->
 
+<div class="container" ng-controller="MainCtrl">
+        <ul>
+            <li ng-repeat = "thing in awesomeThings">{{thing}}</li>
+        </ul>
+</div>
 
 <!-- Footer -->
 <footer class="text-center">
@@ -58,8 +63,8 @@
 <script src="lib/jquery/jquery.js"></script>
 <script src="lib/bootstrap/js/bootstrap.js"></script>
 <script src="lib/bootstrap/js/bootstrap-slider.js"></script>
-<script src="lib/angular/angular-route.js"></script>
 <script src="lib/angular/angular.js"></script>
-
+<script src="lib/angular/angular-route.js"></script>
+<script src="scripts/app.js"></script>
 </body>
 </html>

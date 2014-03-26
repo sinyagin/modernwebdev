@@ -1,1 +1,1 @@
-{"version":3,"file":"app.js","sourceRoot":"","sources":["app.ts"],"names":[],"mappings":"AAAA,2FAA2F"}
+{"version":3,"file":"app.js","sourceRoot":"","sources":["app.ts"],"names":["MainController","MainController.constructor"],"mappings":"AAAA,2FAA2F;AAC3F,sEAAsE;AAEtE;IAIIA,wBAAYA,MAAMA;QACdC,MAAMA,CAACA,aAAaA,GAAGA;YACnBA,OAAOA;YACPA,SAASA;YACTA,OAAOA;YACPA,QAAQA;SACXA;IACLA,CAACA;IATDD,yBAAiBA,CAACA,QAAQA,CAACA;IAU/BA,sBAACA;AAADA,CAACA,IAAA;;AAED,OAAO,CAAC,MAAM,CAAC,SAAS,EAAE,EAAE,CAAC,CAAC,UAAU,CAAC,UAAU,EAAE,cAAc,CAAC"}
