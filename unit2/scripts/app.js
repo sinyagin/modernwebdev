@@ -1,16 +1,22 @@
 // Use this file to *create* an AngularJS module for your app and configure $routeProvider.
 /// <reference path="../lib/DefinitelyTyped/angularjs/angular.d.ts" />
 /// <reference path="../lib/DefinitelyTyped/angularjs/angular-route.d.ts"/>
+/// <reference path="model/ProductModel.ts"/>
 var MainController = (function () {
-    function MainController($scope) {
-        $scope.awesomeThings = [
-            'Html1',
-            'Angular',
-            'Karma',
-            'Test12'
-        ];
+    function MainController($scope, $http, $location) {
+        //todo code runs twice???
+        //todo how to get current location
+        this.url = $location.$$absUrl;
+        this.url = this.url.substr(0, this.url.indexOf("/index")) + '/data/featured.json';
+        console.log(this.url);
+        $http.get(this.url).success(function (data) {
+            this.scopeData = data;
+            console.log("Data:" + this.scopeData.items[0].id);
+        }).error(function () {
+            console.log("Error Load JSON");
+        });
     }
-    MainController.$inject = ['$scope'];
+    MainController.$inject = ['$scope', '$http', '$location'];
     return MainController;
 })();
 
