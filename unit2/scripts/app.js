@@ -1,7 +1,5 @@
 // Use this file to *create* an AngularJS module for your app and configure $routeProvider.
-/// <reference path="../lib/DefinitelyTyped/angularjs/angular.d.ts" />
-/// <reference path="../lib/DefinitelyTyped/angularjs/angular-route.d.ts"/>
-/// <reference path="model/ProductModel.ts"/>
+/// <reference path="refs.ts"/>
 var MainController = (function () {
     function MainController($scope, $http, $location) {
         //todo code runs twice???
