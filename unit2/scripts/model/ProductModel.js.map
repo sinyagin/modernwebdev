@@ -1,1 +1,1 @@
-{"version":3,"file":"ProductModel.js","sourceRoot":"","sources":["ProductModel.ts"],"names":[],"mappings":""}
+{"version":3,"file":"ProductModel.js","sourceRoot":"","sources":["ProductModel.ts"],"names":["auction","auction.model","auction.model.ProductModel","auction.model.ProductModel.constructor"],"mappings":"AACA,IAAO,OAAO;AAWb,CAXD,UAAO,OAAO;IADdA,+DAA+DA;KAC/DA,UAAeA,KAAKA;QAEhBC;YAAAC;YAQAC,CAACA;AAAAD,YAADA,oBAACA;QAADA,CAACA,IAAAD;QARDA,kCAQCA;IACLA,CAACA,yCAAAD;8BAAAA;AAADA,CAACA,6BAAA"}

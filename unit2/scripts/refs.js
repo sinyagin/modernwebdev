@@ -5,4 +5,7 @@
 /// <reference path="../lib/DefinitelyTyped/angularjs/angular.d.ts" />
 /// <reference path="../lib/DefinitelyTyped/angularjs/angular-route.d.ts"/>
 /// <reference path="model/ProductModel.ts"/>
+/// <reference path="controller/HomeController.ts"/>
+/// <reference path="controller/SearchController.ts"/>
+/// <reference path="service/ProductService"/>
 //# sourceMappingURL=refs.js.map

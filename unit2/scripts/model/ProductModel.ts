@@ -1,7 +1,7 @@
 // Implement "POJO" here to keep data of a single Product item.
-module ProductModel {
+module auction.model {
 
-    export interface Item {
+    export class ProductModel {
         id: number;
         title: string;
         thumb: string;
@@ -9,10 +9,5 @@ module ProductModel {
         timeleft: number;
         watchers: number;
         price: number;
-    }
-
-    export interface Items {
-        heading: string;
-        items: Item[];
     }
 }
