@@ -1,6 +1,6 @@
 /// <reference path="refs.ts"/>
 
-'use strict'
+'use strict';
 
 module auction {
 
