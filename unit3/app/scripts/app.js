@@ -1,8 +1,7 @@
 'use strict';
 
 angular
-  .module('unit3App', [
-    'ngSanitize',
+  .module('auctionApp', [
     'ngRoute'
   ])
   .config(function ($routeProvider) {
