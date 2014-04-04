@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
   <head>
     <meta charset="utf-8">
-    <title>Auction app</title>
+    <title ng-bind="title">Auction app</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -31,26 +31,23 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="javascript:void(0);">ABC Auction</a>
+                <a class="navbar-brand" href="#/">ABC Auction</a>
             </div>
             <div class="navbar-collapse collapse">
-                <form action="#/search" class="navbar-form navbar-left navbar-input-group" role="search">
+                <form class="navbar-form navbar-left navbar-input-group" role="search">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Enter product name">
                     </div>
-                    <button type="submit" class="btn btn-default">Search</button>
+                    <a href="#/search" class="btn btn-default">Search</a>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="javascript:void(0)"><span class="glyphicon glyphicon-question-sign"></span> Help</a>
-                    </li>
+                    <li><a href="javascript:void(0)"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
                     <li><a href="javascript:void(0);"><span class="glyphicon glyphicon-user"></span> Login</a></li>
-                    <li><a href="javascript:void(0)"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping
-                        cart</a></li>
+                    <li><a href="javascript:void(0)"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping cart</a></li>
                 </ul>
             </div>
         </div>
     </div>
-    <!-- / Navbar -->
 
     <div class="container" ng-view>
     </div>
