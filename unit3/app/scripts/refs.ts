@@ -7,6 +7,8 @@
 /// <reference path="controller/HomeController.ts" />
 /// <reference path="controller/ProductController.ts" />
 /// <reference path="controller/SearchController.ts" />
+/// <reference path="directive/FooterDirective.ts" />
+/// <reference path="directive/NavbarDirective.ts" />
 /// <reference path="model/ProductModel.ts" />
 /// <reference path="service/ProductService.ts" />
 //grunt-end
