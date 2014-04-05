@@ -23,13 +23,11 @@ module auction {
                     controller: 'SearchController',
                     title: titleUpd('Search')
                 })
-//TODO view one product
-//                .when('/product/:id', {
-//                    templateUrl: 'views/product.html' ,
-//                    controller: 'ProductController',
-//                    title: titleUpd('Product'),
-//                    resolve: auction.controller.ProductController.resolve
-//               })
+                .when('/product/:id', {
+                    templateUrl: 'views/product.html' ,
+                    controller: 'ProductController',
+                    title: titleUpd('Product')
+                })
                 .otherwise({
                     redirectTo: '/'
                 });

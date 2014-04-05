@@ -16,15 +16,16 @@ module auction.service {
 
     class ProductService implements IProductService {
         public static $inject = ['$http', '$q', '$location'];
+        private URL:string = 'data/featured.json';
 
         constructor (private $http: ng.IHttpService, private $q: ng.IQService, private $l: ng.ILocationService) {}
 
         getFeatured(): ng.IPromise<m.ProductModel[]> {
-            return this.getData('data/featured.json');
+            return this.getData(this.URL);
         }
 
         search(): ng.IPromise<m.ProductModel[]> {
-            return this.getData('data/search.json');
+            return this.getData(this.URL);
         }
 
         private getData(url: string): ng.IPromise<m.ProductModel[]> {
