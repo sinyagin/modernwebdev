@@ -5,22 +5,26 @@ module auction.controller {
     import m = auction.model;
     import s = auction.service;
 
-    export interface IProductScope extends ng.IScope {
-        model: ProductController;
+    export class SearchForm {
+        lowPrice:  number = 0;
+        highPrice: number = 100;
     }
 
     export class ProductController {
-        public static $inject = ['$scope', '$routeParams', 'ProductService'];
-        public selected: m.ProductModel;
+        static $inject = ['product'];
 
-        constructor(private $scope: IProductScope, private $routeParams: ng.route.IRouteParamsService,
-                    private productService: s.IProductService) {
-            this.$scope.model = this;
-            var id = this.$routeParams['id'];
-            this.productService.getFeatured().then((products) =>  {
-                this.selected = products.filter(current => current.id === parseInt(id))[0];
-            });
-        }
+        public isSearchFormVisible = false;
+        public searchForm = new SearchForm();
+
+        constructor(public product: m.ProductModel) {}
+
+        public static resolve = {
+            product: ['$route', 'ProductService',
+                ($route, productService: s.IProductService) => {
+                    var productId = parseInt($route.current.params.id);
+                    return productService.getById(productId);
+                }]
+        };
     }
     angular.module('auction').controller('ProductController', ProductController);
 }

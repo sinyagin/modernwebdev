@@ -7,6 +7,7 @@ module auction.service {
     export interface IProductService {
         getFeatured(): ng.IPromise<m.ProductModel[]>;
         search(): ng.IPromise<m.ProductModel[]>;
+        getById(id: number): ng.IPromise<m.ProductModel>;
     }
 
     class ProductService implements IProductService {
@@ -21,6 +22,11 @@ module auction.service {
 
         search(): ng.IPromise<m.ProductModel[]> {
             return this.getData(this.URL);
+        }
+
+        getById(id: number): ng.IPromise<m.ProductModel> {
+            return this.search().then(products => _.find(products,
+                (p: m.ProductModel) => p.id === id));
         }
 
         private getData(url: string): ng.IPromise<m.ProductModel[]> {
