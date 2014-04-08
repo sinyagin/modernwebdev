@@ -4,36 +4,29 @@
 
 module auction {
 
-    interface IRootScope extends ng.IRootScopeService {
-        title: string;
-    }
 
     angular.module('auction', ['ngRoute'])
         .config(($routeProvider: ng.route.IRouteProvider) => {
-            var titleUpd = (t) => t + ' | Auction';
 
             $routeProvider
                 .when('/', {
                     templateUrl: 'views/home.html',
                     controller: 'HomeController',
-                    title: 'Auction'
+                    controllerAs: 'ctrl'
                 })
                 .when('/search', {
                     templateUrl: 'views/search.html',
                     controller: 'SearchController',
-                    title: titleUpd('Search')
+                    controllerAs: 'ctrl'
                 })
                 .when('/product/:id', {
                     templateUrl: 'views/product.html' ,
                     controller: 'ProductController',
-                    title: titleUpd('Product')
+                    controllerAs: 'ctrl',
+                    resolve: auction.controller.ProductController.resolve
                 })
                 .otherwise({
                     redirectTo: '/'
                 });
-        }).run(['$rootScope', ($rootScope: IRootScope) => {
-            $rootScope.$on('$routeChangeStart', function (event, next) {
-                $rootScope.title = next.title;
-            });
-        }]);
+        });
 }

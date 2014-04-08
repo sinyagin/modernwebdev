@@ -11,10 +11,10 @@ module auction.service {
     }
 
     class ProductService implements IProductService {
-        public static $inject = ['$http', '$q', '$location'];
+        public static $inject = ['$http', '$q'];
         private URL:string = 'data/featured.json';
 
-        constructor (private $http: ng.IHttpService, private $q: ng.IQService, private $l: ng.ILocationService) {}
+        constructor (private $http: ng.IHttpService, private $q: ng.IQService) {}
 
         getFeatured(): ng.IPromise<m.ProductModel[]> {
             return this.getData(this.URL);

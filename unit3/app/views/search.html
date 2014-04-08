@@ -1,47 +1,43 @@
-<div class="container" ng-controller="SearchController">
+<!-- Current App's Heading -->
+<h2 class="well well-sm" id="app-heading">
+    Search Results
+</h2>
 
-    <br/><br/>
-
-    <h2 class="well well-sm">
-        Search Result
-    </h2>
-
-    <ul class="list-unstyled"  ng-repeat="product in model.search">
-        <li class="col-md-4">
-            <div class="col-md-4">
-                <a ng-href="#/product/{{ product.id }}"><img ng-src="images/{{ product.thumb}}" alt="" class="img-responsive"></a>
+<div class="row">
+    <!-- Featured Products – list container   -->
+    <ul class="list-unstyled" id="items-list">
+        <li class="col-md-4" ng-repeat="product in ctrl.search">
+            <div class="row">
+                <div class="col-xs-4">
+                    <a ng-href="#/product/{{ product.id }}"><img ng-src="images/{{ product.thumb }}" alt="" class="img-responsive"></a>
+                </div>
+                <div class="product-description-holder col-xs-8">
+                    <h2><a ng-href="#/product/{{ product.id }}">{{ product.title }}</a></h2>
+                    <p>{{ product.description }}</p>
+                </div>
             </div>
-
-            <div class="product-description-holder col-xs-8">
-                <h2>
-                    <a href="#/product/{{product.id}}">{{product.title}}</a>
-                </h2>
-
-                <p>
-                    {{product.description}}
-                </p>
-            </div>
-            <div class="row product-info col-sm-12">
+            <br/>
+            <div class="row">
                 <div class="col-xs-4 text-center">
-                    <span class="badge"> {{product.timeleft}} time left</span>
-                    <br>
-                    Today 15.23
+                    <span class="badge">{{ product.timeleft }} hour left</span><br/>
+                    <small>Today 15.00</small>
                 </div>
-                <div class="col-xs-4  text-center">
-                        <span class="badge">
-                            <span class="glyphicon glyphicon-eye-open"></span> {{product.watchers}}
-                        </span>
-                    <br>
-                    Watchers
+                <div class="col-xs-4 text-center">
+            <span class="badge">
+              <span class="glyphicon glyphicon-eye-open"></span> {{ product.watchers }}
+            </span>
+                    <br/>
+                    <small>Watchers</small>
                 </div>
-                <div class="col-xs-4  text-center">
-                        <span class="badge">
-                            <span class="glyphicon glyphicon-usd"></span> {{product.price | currency}}
-                        </span>
-                    <br>
-                    Current price
+                <div class="col-xs-4 text-center">
+            <span class="badge">
+              {{ product.price | currency }}
+            </span>
+                    <br/>
+                    <small>Current price</small>
                 </div>
             </div>
+            <hr/>
         </li>
     </ul>
 </div>

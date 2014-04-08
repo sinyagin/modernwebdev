@@ -5,16 +5,11 @@ module auction.controller {
     import m = auction.model;
     import s = auction.service;
 
-    export interface IHomeScope extends ng.IScope {
-        model: HomeController;
-    }
-
     export class HomeController {
-        public static $inject = ['$scope', 'ProductService'];
+        public static $inject = ['ProductService'];
         public featured: m.ProductModel[];
 
-        constructor(private $scope: IHomeScope, private productService: s.IProductService) {
-            this.$scope.model = this;
+        constructor(private productService: s.IProductService) {
             this.productService.getFeatured().then((products) =>  this.featured = products);
         }
     }

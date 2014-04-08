@@ -5,16 +5,11 @@ module auction.controller {
     import m = auction.model;
     import s = auction.service;
 
-    export interface ISearchScope extends ng.IScope {
-        model: SearchController;
-    }
-
     export class SearchController {
-        public static $inject = ['$scope', 'ProductService'];
+        public static $inject = ['ProductService'];
         public search: m.ProductModel[];
 
-        constructor(private $scope: ISearchScope, private productService: s.IProductService) {
-            this.$scope.model = this;
+        constructor(private productService: s.IProductService) {
             this.productService.getFeatured().then((products) =>  this.search = products);
         }
     }
