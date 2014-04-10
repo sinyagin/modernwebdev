@@ -7,6 +7,7 @@
 /// <reference path="controller/HomeController.ts" />
 /// <reference path="controller/ProductController.ts" />
 /// <reference path="controller/SearchController.ts" />
+/// <reference path="directive/CheckDateDirective.ts" />
 /// <reference path="directive/DatepickerDirective.ts" />
 /// <reference path="directive/FooterDirective.ts" />
 /// <reference path="directive/NavbarDirective.ts" />

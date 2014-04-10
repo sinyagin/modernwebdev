@@ -8,6 +8,9 @@ module auction.controller {
     export class SearchForm {
         lowPrice:  number = 0;
         highPrice: number = 100;
+        title: string;
+        bids: number;
+        date: Date;
     }
 
     export class ProductController {
