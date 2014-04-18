@@ -1,23 +1,21 @@
 /// <reference path='../refs.ts'/>
+'use strict';
+
 module auction.controller {
-    'use strict';
 
-    import m = auction.model;
-    import s = auction.service;
+  import m = auction.model;
+  import s = auction.service;
 
-    export class SearchController {
-        public static $inject = ['ProductService'];
-        public search: m.ProductModel[];
-        public searchForm = new SearchForm();
+  class SearchController {
+    static $inject = ['ProductService'];
 
-        constructor(private productService: s.IProductService) {
-            this.productService.getFeatured().then((products) =>  this.search = products);
-        }
+    public searchResult: m.ProductModel[];
 
-        submitForm() {
-            console.log("test");
-
-        }
+    constructor(productService: s.IProductService) {
+      productService.search()
+        .then((products) => this.searchResult = products);
     }
-    angular.module('auction').controller('SearchController', SearchController);
+  }
+
+  angular.module('auction').controller('SearchController', SearchController);
 }

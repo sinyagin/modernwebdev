@@ -5,10 +5,11 @@
 
 //grunt-start
 /// <reference path="app.ts" />
-/// <reference path="controller/MainController.ts" />
+/// <reference path="controller/HomeController.ts" />
 /// <reference path="controller/ProductController.ts" />
 /// <reference path="controller/SearchController.ts" />
 /// <reference path="controller/SearchFormController.ts" />
+/// <reference path="directive/CheckDateDirective.ts" />
 /// <reference path="directive/DatepickerDirective.ts" />
 /// <reference path="directive/FooterDirective.ts" />
 /// <reference path="directive/NavbarDirective.ts" />
