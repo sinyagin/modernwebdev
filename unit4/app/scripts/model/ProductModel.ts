@@ -1,13 +1,19 @@
-// Implement "POJO" here to keep data of a single Product item.
-module auction.model {
+/// <reference path='../refs.ts'/>
+'use strict';
 
-    export class ProductModel {
-        id: number;
-        title: string;
-        thumb: string;
-        description: string;
-        timeleft: number;
-        watchers: number;
-        price: number;
-    }
+module auction.model {
+  // Notice how we use `export` here. Since model is used directly and not
+  // registered into Angular's DI container, it should be available outside the
+  // `auction.model` module.
+  export class ProductModel {
+    id            : number;
+    title         : string;
+    thumb         : string;
+    description   : string;
+    quantity      : number;
+    watchers      : number;
+    minimalPrice  : number;
+    reservedPrice : number;
+    auctionEndTime: Date;
+  }
 }

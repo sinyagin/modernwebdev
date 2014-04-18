@@ -4,9 +4,8 @@
 
 module auction {
 
-
-    angular.module('auction', ['ngRoute'])
-        .config(($routeProvider: ng.route.IRouteProvider) => {
+    angular.module('auction', ['ngRoute', 'restangular'])
+        .config(['$routeProvider', ($routeProvider) => {
 
             $routeProvider
                 .when('/', {
@@ -28,5 +27,8 @@ module auction {
                 .otherwise({
                     redirectTo: '/'
                 });
-        });
+        }])
+        .config(['RestangularProvider', (RestangularProvider) => {
+            RestangularProvider.setBaseUrl('http://127.0.0.1:8080/auction_jaxrs-1.0/api');
+        }]);
 }
