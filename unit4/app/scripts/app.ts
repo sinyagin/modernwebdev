@@ -29,6 +29,6 @@ module auction {
                 });
         }])
         .config(['RestangularProvider', (RestangularProvider) => {
-            RestangularProvider.setBaseUrl('http://127.0.0.1:8080/auction_jaxrs-1.0/api');
+            RestangularProvider.setBaseUrl('http://webauctionv1.apiary-mock.com');
         }]);
 }
