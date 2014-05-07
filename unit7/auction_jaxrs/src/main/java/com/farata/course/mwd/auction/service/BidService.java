@@ -1,6 +1,7 @@
 package com.farata.course.mwd.auction.service;
 
 import com.farata.course.mwd.auction.entity.Bid;
+import com.farata.course.mwd.auction.entity.Product;
 
 import javax.annotation.Resource;
 import javax.jms.*;
@@ -30,10 +31,10 @@ public class BidService {
     private static final String INITIAL_CONTEXT_FACTORY = "org.jboss.naming.remote.client.InitialContextFactory";
     private static final String PROVIDER_URL = "http-remoting://127.0.0.1:8080";
 
-    @Resource(lookup ="java:/ConnectionFactory")
+    //  // TODO I don't have a connection @Resource(lookup ="java:/ConnectionFactory")
     ConnectionFactory connectionFactory;
 
-    @Resource(lookup = "queue/test")
+    // TODO I don't have a queue @Resource(lookup = "queue/test")
     Queue testQueue;
 
 
@@ -46,11 +47,12 @@ public class BidService {
 
     // TODO: Provide actual implementation
     @POST
-    public Bid placeBid(/*@Valid Bid bid*/) {
+    @Consumes("application/json")
+    public Bid placeBid(@Valid Bid bid) {
 
-        sendBidToQueue(); // Send a message to the queue
+     //   sendBidToQueue(); // Send a message to the queue
 
-        return new Bid();
+        return new Bid(99, bid.getAmount());
 
     }
 

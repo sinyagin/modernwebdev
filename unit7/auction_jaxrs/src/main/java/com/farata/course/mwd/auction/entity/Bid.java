@@ -1,6 +1,11 @@
 package com.farata.course.mwd.auction.entity;
 
+import javax.json.Json;
 import javax.json.JsonObject;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -8,6 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -17,7 +23,14 @@ public class Bid {
     @NotNull
     private int id;
     private Product product;
+
+    @NotNull
+    @DecimalMin("0.01")
+    @DecimalMax("99999.99")
     private BigDecimal amount;
+
+    @Min(1)
+    @Max(99)
     private int desiredQuantity; // How many items the user wants
     private User user;
     private LocalDateTime bidTime;
@@ -57,7 +70,16 @@ public class Bid {
     // TODO: Implement getJSonObjet
     @XmlTransient
     public JsonObject getJsonObject() {
-        return null;
+        return Json.createObjectBuilder()
+                .add("id", id)
+                .add("product", product.getJsonObject())
+                .add("amount", amount)
+                .add("desiredQuantity", desiredQuantity)
+                .add("user", user.getJsonObject())
+                .add("bidTime", bidTime.format(DateTimeFormatter.ofPattern("MMM d yyyy  hh:mm a")))
+                .add("isWinning", isWinning)
+                .build();
+
     }
 
     public int getId() {

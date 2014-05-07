@@ -1,5 +1,9 @@
 package com.farata.course.mwd.auction.entity;
 
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.xml.bind.annotation.XmlTransient;
+
 public class User {
     private int id;
     private String name;
@@ -24,6 +28,16 @@ public class User {
     }
 
     // TODO implement to getJsonObject method
+    @XmlTransient
+    public JsonObject getJsonObject() {
+        return Json.createObjectBuilder()
+                .add("id", id)
+                .add("name", name)
+                .add("email", email)
+                .add("hasOverbidNotifications", hasOverbidNotifications)
+                .build();
+    }
+
 
     public int getId() {
         return id;
