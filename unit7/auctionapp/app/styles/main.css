@@ -1,0 +1,10 @@
+/* Add custom styles here */
+.breadcrumb {
+  margin-bottom: 0;
+}
+button.close {
+  margin-top: 7px;
+}
+.slider.slider-horizontal {
+  width: 100%;
+}

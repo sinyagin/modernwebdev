@@ -3,5 +3,6 @@ dist
 .tmp
 .sass-cache
 app/bower_components
-*.iml
-*.jar
+.baseDir.ts
+.tscache/
+.idea/
