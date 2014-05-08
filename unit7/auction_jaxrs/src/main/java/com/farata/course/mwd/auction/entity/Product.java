@@ -98,7 +98,9 @@ public class Product {
         this.timeleft = timeleft;
     }
 
-
+    public BigDecimal getMinimalPrice() {
+        return minimalPrice;
+    }
 
     public Integer getId() {
         return id;

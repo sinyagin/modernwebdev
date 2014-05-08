@@ -14,6 +14,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 import java.util.List;
 
 @Path("/product")
@@ -47,7 +48,7 @@ public class ProductService {
      */
     @GET
     @Path("/search")
-    public Response getSearchResults() {
+    public Response getSearchResults(@Context UriInfo uriInfo) {
         final JsonObjectBuilder jsonResult = itemsWithHeading("Search results");
         return Response.ok(jsonResult.build()).build();
 
@@ -55,14 +56,25 @@ public class ProductService {
 
     private JsonObjectBuilder itemsWithHeading(String heading) {
         JsonArrayBuilder itemsBuilder = Json.createArrayBuilder();
-        dataEngine.findAllFeaturedProducts().forEach(product -> {
+        dataEngine.findAllProducts().forEach(product -> {
             itemsBuilder.add(product.getJsonObject());
-
         });
 
         return Json.createObjectBuilder()
             .add("heading", heading)
             .add("items", itemsBuilder);
+    }
+
+    private JsonObjectBuilder itemsWithHeading(String heading, UriInfo uriInfo) {
+        JsonArrayBuilder itemsBuilder = Json.createArrayBuilder();
+        dataEngine.findAllFeaturedProducts(uriInfo).forEach(product -> {
+            itemsBuilder.add(product.getJsonObject());
+        });
+
+        return Json.createObjectBuilder()
+                .add("heading", heading)
+                .add("items", itemsBuilder);
+
     }
 
     @GET

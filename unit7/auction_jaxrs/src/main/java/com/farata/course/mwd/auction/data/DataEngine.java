@@ -4,12 +4,15 @@ import com.farata.course.mwd.auction.entity.Product;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Singleton;
+import javax.ws.rs.core.UriInfo;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 @Singleton
 public class DataEngine {
@@ -51,9 +54,28 @@ public class DataEngine {
         return Collections.unmodifiableList(productsList);
     }
 
-    public List<Product> findAllFeaturedProducts() {
+
+    public List<Product> findAllFeaturedProducts(UriInfo uriInfo) {
+        String title = uriInfo.getQueryParameters().getFirst("Title");
+        //String bidsCount = uriInfo.getQueryParameters().getFirst("bidsCount");
+        String highPrice = uriInfo.getQueryParameters().getFirst("highPrice");
+        String lowPrice = uriInfo.getQueryParameters().getFirst("lowPrice");
+        Predicate<Product> allProduct = new Predicate<Product>() {
+            @Override
+            public boolean test(Product product) {
+                return true;
+            }
+        };
+        List<Product> featuredProducts = productsList.stream()
+                .filter(title != null ? product -> product.getTitle().contains(title) : allProduct)
+                .filter(highPrice != null ?
+                        product -> product.getMinimalPrice().compareTo(new BigDecimal(highPrice)) == -1 : allProduct)
+                .filter(lowPrice != null ?
+                        product -> product.getMinimalPrice().compareTo(new BigDecimal(lowPrice)) == 1 : allProduct)
+                .collect(Collectors.toList());
+
         // TODO featured products
-        return Collections.unmodifiableList(productsList);
+        return Collections.unmodifiableList(featuredProducts);
     }
 
     public Product findProductById(int id) {
