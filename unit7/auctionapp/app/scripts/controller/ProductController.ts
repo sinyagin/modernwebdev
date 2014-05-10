@@ -31,6 +31,8 @@ module auction.controller {
     placeBid() {
       var bidModel = new model.BidModel();
       bidModel.amount = this.bid;
+      bidModel.id = this.product.id;
+      bidModel.desiredQuantity = 1;
 
       this.restangular.all('bid').post(bidModel).then(
           // TODO: If your app logic differs from the line below, update it accordingly (read more in the homework's assignment).

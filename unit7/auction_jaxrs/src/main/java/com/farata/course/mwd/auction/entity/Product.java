@@ -110,6 +110,10 @@ public class Product {
         this.id = id;
     }
 
+    public BigDecimal getReservedPrice() {
+        return reservedPrice;
+    }
+
     @XmlTransient
     public JsonObject getJsonObject() {
         return Json.createObjectBuilder()

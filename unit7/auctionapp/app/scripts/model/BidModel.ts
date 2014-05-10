@@ -8,5 +8,6 @@ module auction.model {
     desiredQuantity : number;
     isWinning       : boolean;
     bidTime         : Date;
+    idProduct       : number;
   }
 }

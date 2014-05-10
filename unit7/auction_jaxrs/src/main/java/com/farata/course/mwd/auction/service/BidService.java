@@ -1,9 +1,12 @@
 package com.farata.course.mwd.auction.service;
 
+import com.farata.course.mwd.auction.data.DataEngine;
 import com.farata.course.mwd.auction.entity.Bid;
 import com.farata.course.mwd.auction.entity.Product;
+import com.farata.course.mwd.auction.entity.User;
 
 import javax.annotation.Resource;
+import javax.inject.Inject;
 import javax.jms.*;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -11,7 +14,11 @@ import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
+import javax.ws.rs.core.Response;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.Logger;
 
@@ -37,7 +44,12 @@ public class BidService {
     // TODO I don't have a queue @Resource(lookup = "queue/test")
     Queue testQueue;
 
+    DataEngine dataEngine;
 
+    @Inject
+    public void setDataEngine(DataEngine dataEngine) {
+        this.dataEngine = dataEngine;
+    }
     // TODO: Provide actual implementation
     @GET
     @Path("/{id}/")
@@ -48,12 +60,29 @@ public class BidService {
     // TODO: Provide actual implementation
     @POST
     @Consumes("application/json")
-    public Bid placeBid(@Valid Bid bid) {
+    public Response placeBid(@Valid Bid bid) {
 
      //   sendBidToQueue(); // Send a message to the queue
-
-        return new Bid(99, bid.getAmount());
-
+        Product product = dataEngine.findProductById(bid.getId());
+        if  (product == null) {
+            throw new NotFoundException("Product not found : " + bid.getId());
+        }
+        if (product.getReservedPrice().compareTo(bid.getAmount()) == -1) {
+            return Response.status(Response.Status.OK).entity("You are winner").build();
+        } else if (product.getMinimalPrice().compareTo(bid.getAmount()) == 1) {
+            //todo how send error or mess
+           return Response.status(Response.Status.OK).entity("You aren't win").build();
+        } else {
+            bid.setId(dataEngine.getNextBidId());
+            bid.setAmount(bid.getAmount());
+            bid.setBidTime(LocalDateTime.now());
+            bid.setProduct(product);
+            bid.setUser(new User(1, "foo", "foo@mail.ru", true));
+            dataEngine.addBid(bid);
+            List<Bid> bids = dataEngine.getAllBids(product.getId());
+            bids.sort((o1, o2) -> o1.getAmount().compareTo(o2.getAmount()));
+            return Response.status(Response.Status.OK).entity(bids.get(0).getJsonObject()).build();
+        }
     }
 
     private void sendBidToQueue(){

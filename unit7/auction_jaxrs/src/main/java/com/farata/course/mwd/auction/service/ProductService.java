@@ -49,7 +49,7 @@ public class ProductService {
     @GET
     @Path("/search")
     public Response getSearchResults(@Context UriInfo uriInfo) {
-        final JsonObjectBuilder jsonResult = itemsWithHeading("Search results");
+        final JsonObjectBuilder jsonResult = itemsWithHeading("Search results", uriInfo);
         return Response.ok(jsonResult.build()).build();
 
     }

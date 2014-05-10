@@ -1,5 +1,6 @@
 package com.farata.course.mwd.auction.data;
 
+import com.farata.course.mwd.auction.entity.Bid;
 import com.farata.course.mwd.auction.entity.Product;
 
 import javax.annotation.PostConstruct;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -19,9 +21,13 @@ public class DataEngine {
 
     @PostConstruct void init() {
         initProducts();
+        bidList = new ArrayList<>();
+        count = new AtomicInteger();
     }
 
     private List<Product> productsList;
+    private List<Bid> bidList;
+    private AtomicInteger count;
 
     private void initProducts() {
         productsList = new ArrayList<Product>() {
@@ -56,7 +62,7 @@ public class DataEngine {
 
 
     public List<Product> findAllFeaturedProducts(UriInfo uriInfo) {
-        String title = uriInfo.getQueryParameters().getFirst("Title");
+        String title = uriInfo.getQueryParameters().getFirst("title");
         //String bidsCount = uriInfo.getQueryParameters().getFirst("bidsCount");
         String highPrice = uriInfo.getQueryParameters().getFirst("highPrice");
         String lowPrice = uriInfo.getQueryParameters().getFirst("lowPrice");
@@ -83,8 +89,22 @@ public class DataEngine {
         for (Product product : productsList) {
             if (product.getId().compareTo(id) == 0) {
                 result = product;
+                break;
             }
         }
         return result;
     }
+
+    public void addBid(Bid bid) {
+        bidList.add(bid);
+    }
+
+    public int getNextBidId() {
+        return count.incrementAndGet();
+    }
+
+    public List<Bid> getAllBids(int idProduct) {
+        return bidList.stream().filter(bid -> bid.getProduct().getId() == idProduct).collect(Collectors.toList());
+    }
+
 }

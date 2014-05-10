@@ -49,7 +49,7 @@ module auction.service {
      */
     search(params?): ng.IPromise<m.ProductModel[]> {
       return params ?
-          this.restangular.all('products').getList(params) :
+          this.restangular.all('product/search').getList(params):
           this.$http.get('data/search.json').then(
               (resp) => <m.ProductModel[]>resp.data.items,
               () => this.$log.error(ProductService.ERROR_MSG_SEARCH));
